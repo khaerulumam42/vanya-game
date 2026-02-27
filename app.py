@@ -1,5 +1,5 @@
 from flask import Flask, render_template, session, redirect, url_for
-from database import init_db, get_all_professions, add_profession, delete_profession, get_profession_by_id
+from database import init_db
 
 app = Flask(__name__)
 app.secret_key = 'change-this-secret-key-in-production'
