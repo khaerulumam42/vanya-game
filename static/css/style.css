@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #87CEEB 0%, #98D8C8 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    font-family: 'Fredoka One', cursive;
+    color: #1a1a2e;
+}
+
+.btn {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+    background: #FFD700;
+    color: #1a1a2e;
+}
+
+.btn-secondary {
+    background: #FF6B35;
+    color: white;
+}
+
+.btn-success {
+    background: #32CD32;
+    color: white;
+}
+
+.btn-danger {
+    background: #FF69B4;
+    color: white;
+}
