@@ -61,7 +61,7 @@ def count_professions():
 
 def delete_profession(prof_id):
     conn = get_db()
-    prof = get_profession_by_id(prof_id)
+    prof = conn.execute('SELECT * FROM professions WHERE id = ?', (prof_id,)).fetchone()
     if prof:
         # Delete image file
         image_path = prof['image_path']
