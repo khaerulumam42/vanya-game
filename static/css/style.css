@@ -58,3 +58,63 @@ h1, h2, h3 {
     background: #FF69B4;
     color: white;
 }
+
+.landing {
+    text-align: center;
+}
+
+.game-title {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #FF6B35;
+    text-shadow: 3px 3px 0 #FFD700;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #1a1a2e;
+    margin-bottom: 40px;
+}
+
+.choice-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.choice-card {
+    background: white;
+    border-radius: 30px;
+    padding: 40px;
+    min-width: 200px;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.choice-card:hover {
+    transform: translateY(-10px);
+}
+
+.choice-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.choice-card h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.choice-card p {
+    color: #666;
+}
+
+.admin-card {
+    border: 5px solid #FF69B4;
+}
+
+.player-card {
+    border: 5px solid #32CD32;
+}

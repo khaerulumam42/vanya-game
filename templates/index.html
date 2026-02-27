@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Tebak Profesi - Home{% endblock %}
+
+{% block content %}
+<div class="landing">
+    <h1 class="game-title">🎮 Tebak Profesi 🎮</h1>
+    <p class="subtitle">Permainan tebak-tebakan profesi yang seru!</p>
+
+    <div class="choice-container">
+        <a href="{{ url_for('admin') }}" class="choice-card admin-card">
+            <div class="choice-icon">👨‍👩‍👧</div>
+            <h2>Mama Papa</h2>
+            <p>Upload gambar profesi</p>
+        </a>
+
+        <a href="{{ url_for('play') }}" class="choice-card player-card">
+            <div class="choice-icon">👧</div>
+            <h2>Vanya</h2>
+            <p>Main tebak profesi</p>
+        </a>
+    </div>
+</div>
+{% endblock %}
