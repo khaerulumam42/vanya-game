@@ -2,7 +2,7 @@ import os
 import uuid
 from flask import Flask, render_template, session, redirect, url_for, request, flash
 from werkzeug.utils import secure_filename
-from database import init_db, get_all_professions, count_professions, add_profession, delete_profession, allowed_file
+from database import init_db, get_all_professions, count_professions, add_profession, delete_profession, get_profession_by_id, get_random_professions, allowed_file
 
 app = Flask(__name__)
 app.secret_key = 'change-this-secret-key-in-production'
@@ -62,6 +62,68 @@ def delete_prof(id):
     delete_profession(id)
     flash('Profesi berhasil dihapus!', 'success')
     return redirect(url_for('admin'))
+
+@app.route('/play/start', methods=['POST'])
+def start_game():
+    count = int(request.form.get('count', 5))
+    available = count_professions()
+
+    if available == 0:
+        return redirect(url_for('play'))
+
+    # Cap at available count
+    actual_count = min(count, available)
+
+    # Get random professions
+    professions = get_random_professions(actual_count)
+
+    # Initialize game session
+    session['game'] = {
+        'profession_ids': [p['id'] for p in professions],
+        'current_index': 0,
+        'score': 0,
+        'total': actual_count,
+        'answers': []
+    }
+
+    return redirect(url_for('game'))
+
+@app.route('/game')
+def game():
+    if 'game' not in session:
+        return redirect(url_for('index'))
+
+    game_data = session['game']
+    current_index = game_data['current_index']
+
+    # Check if game is finished
+    if current_index >= game_data['total']:
+        return redirect(url_for('result'))
+
+    # Get current profession
+    prof_id = game_data['profession_ids'][current_index]
+    profession = get_profession_by_id(prof_id)
+
+    return render_template('game.html',
+        profession=profession,
+        score=game_data['score'],
+        total=game_data['total'],
+        current=current_index + 1
+    )
+
+@app.route('/result')
+def result():
+    if 'game' not in session:
+        return redirect(url_for('index'))
+
+    game_data = session['game']
+    score = game_data['score']
+    total = game_data['total']
+
+    # Clear session
+    session.pop('game', None)
+
+    return render_template('result.html', score=score, total=total)
 
 if __name__ == '__main__':
     init_db()
