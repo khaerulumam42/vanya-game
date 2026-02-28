@@ -464,3 +464,76 @@ h1, h2, h3 {
     justify-content: center;
     flex-wrap: wrap;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .game-title {
+        font-size: 2rem;
+    }
+
+    .choice-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .choice-card {
+        min-width: 100%;
+        padding: 30px;
+    }
+
+    .admin-page,
+    .select-count-page,
+    .game-page,
+    .result-page {
+        padding: 20px;
+    }
+
+    .professions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .count-buttons {
+        flex-wrap: wrap;
+    }
+
+    .count-btn {
+        width: 70px;
+        height: 70px;
+        font-size: 1.5rem;
+    }
+
+    .answer-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #answerInput {
+        max-width: 100%;
+        font-size: 1.1rem;
+    }
+
+    #professionImage {
+        max-height: 250px;
+    }
+
+    .result-title {
+        font-size: 2rem;
+    }
+
+    .score-circle {
+        width: 120px;
+        height: 120px;
+    }
+
+    .score-number {
+        font-size: 2rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .action-buttons .btn {
+        width: 100%;
+    }
+}
