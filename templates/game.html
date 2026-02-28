@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Tebak Profesi!{% endblock %}
+
+{% block extra_head %}
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="game-page">
+    <div class="game-header">
+        <h2 class="game-title-small">Tebak Profesi!</h2>
+        <div class="score-display">
+            <span class="score-label">Skor:</span>
+            <span class="score-value" id="currentScore">0</span>
+            <span class="score-divider">/</span>
+            <span class="score-total" id="totalScore">5</span>
+            <span class="stars" id="starsDisplay"></span>
+        </div>
+        <div class="question-number">
+            Soal <span id="currentQuestion">1</span> dari <span id="totalQuestions">5</span>
+        </div>
+    </div>
+
+    <div class="game-content">
+        <div class="image-container" id="imageContainer">
+            <img id="professionImage" src="" alt="Tebak profesi ini!">
+        </div>
+
+        <div class="answer-section">
+            <input type="text" id="answerInput" placeholder="Jawaban..." autocomplete="off">
+            <button id="submitBtn" class="btn btn-primary">Jawab!</button>
+        </div>
+
+        <div id="feedback" class="feedback hidden">
+            <p id="feedbackText"></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/game.js') }}"></script>
+<script>
+    // Pass server data to JavaScript
+    window.gameData = {
+        professionPath: "{{ profession.image_path.replace('static/', '') if profession else '' }}",
+        staticPath: "{{ url_for('static', filename='') }}",
+        score: {{ score }},
+        current: {{ current }},
+        total: {{ total }}
+    };
+</script>
+{% endblock %}

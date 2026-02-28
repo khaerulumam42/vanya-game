@@ -1,6 +1,6 @@
 import os
 import uuid
-from flask import Flask, render_template, session, redirect, url_for, request, flash
+from flask import Flask, render_template, session, redirect, url_for, request, flash, jsonify
 from werkzeug.utils import secure_filename
 from database import init_db, get_all_professions, count_professions, add_profession, delete_profession, get_profession_by_id, get_random_professions, allowed_file
 
@@ -110,6 +110,45 @@ def game():
         total=game_data['total'],
         current=current_index + 1
     )
+
+@app.route('/game/submit', methods=['POST'])
+def submit_answer():
+    if 'game' not in session:
+        return jsonify({'error': 'No active game'}), 400
+
+    user_answer = request.json.get('answer', '').strip().lower()
+    game_data = session['game']
+    current_index = game_data['current_index']
+    prof_id = game_data['profession_ids'][current_index]
+    profession = get_profession_by_id(prof_id)
+
+    correct_answer = profession['answer'].strip().lower()
+    is_correct = user_answer == correct_answer
+
+    # Record answer
+    game_data['answers'].append({
+        'id': prof_id,
+        'user_answer': user_answer,
+        'correct': is_correct,
+        'correct_answer': correct_answer
+    })
+
+    if is_correct:
+        game_data['score'] += 1
+
+    # Move to next question
+    game_data['current_index'] += 1
+    session['game'] = game_data
+
+    finished = game_data['current_index'] >= game_data['total']
+
+    return jsonify({
+        'correct': is_correct,
+        'correct_answer': profession['answer'],
+        'finished': finished,
+        'score': game_data['score'],
+        'total': game_data['total']
+    })
 
 @app.route('/result')
 def result():
