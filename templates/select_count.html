@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Pilih Jumlah Soal{% endblock %}
+
+{% block content %}
+<div class="select-count-page">
+    <h1>👧 Halo Vanya!</h1>
+    <p class="subtitle">Berapa profesi yang ingin ditebak?</p>
+
+    {% if available_count == 0 %}
+    <div class="no-data">
+        <p>😢 Maaf, belum ada profesi tersedia.</p>
+        <p>Mama Papa harus upload dulu ya!</p>
+        <a href="{{ url_for('index') }}" class="btn btn-primary">Kembali ke Home</a>
+    </div>
+    {% else %}
+    <div class="count-buttons">
+        {% for count in [5, 10, 15, 20] %}
+            {% if count <= available_count %}
+            <form action="{{ url_for('start_game') }}" method="post">
+                <input type="hidden" name="count" value="{{ count }}">
+                <button type="submit" class="btn btn-primary count-btn">{{ count }}</button>
+            </form>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <p class="available-info">Tersedia {{ available_count }} profesi</p>
+
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Kembali</a>
+    {% endif %}
+</div>
+{% endblock %}

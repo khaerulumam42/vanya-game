@@ -1,0 +1,539 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #87CEEB 0%, #98D8C8 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    font-family: 'Fredoka One', cursive;
+    color: #1a1a2e;
+}
+
+.btn {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+    background: #FFD700;
+    color: #1a1a2e;
+}
+
+.btn-secondary {
+    background: #FF6B35;
+    color: white;
+}
+
+.btn-success {
+    background: #32CD32;
+    color: white;
+}
+
+.btn-danger {
+    background: #FF69B4;
+    color: white;
+}
+
+.landing {
+    text-align: center;
+}
+
+.game-title {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #FF6B35;
+    text-shadow: 3px 3px 0 #FFD700;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #1a1a2e;
+    margin-bottom: 40px;
+}
+
+.choice-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.choice-card {
+    background: white;
+    border-radius: 30px;
+    padding: 40px;
+    min-width: 200px;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.choice-card:hover {
+    transform: translateY(-10px);
+}
+
+.choice-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.choice-card h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.choice-card p {
+    color: #666;
+}
+
+.admin-card {
+    border: 5px solid #FF69B4;
+}
+
+.player-card {
+    border: 5px solid #32CD32;
+}
+
+.admin-page {
+    background: white;
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.upload-section {
+    background: #FFF8E7;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.form-group input[type="file"],
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 3px solid #FFD700;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-family: 'Nunito', sans-serif;
+}
+
+.professions-list {
+    margin-bottom: 30px;
+}
+
+.professions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.profession-item {
+    background: #F0F0F0;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+}
+
+.profession-item img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.profession-name {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.btn-small {
+    font-size: 1rem;
+    padding: 8px 16px;
+}
+
+.empty-message {
+    text-align: center;
+    color: #999;
+    font-size: 1.2rem;
+}
+
+.delete-form {
+    display: inline;
+}
+
+.flash-messages {
+    margin-bottom: 20px;
+}
+
+.flash {
+    padding: 15px 20px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.flash-success {
+    background: #32CD32;
+    color: white;
+}
+
+.flash-error {
+    background: #FF69B4;
+    color: white;
+}
+
+.select-count-page {
+    background: white;
+    border-radius: 30px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.count-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+.count-btn {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+    border-radius: 50%;
+}
+
+.available-info {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.no-data {
+    text-align: center;
+}
+
+.no-data p {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.game-page {
+    background: white;
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.game-title-small {
+    font-size: 1.8rem;
+    color: #FF6B35;
+    margin-bottom: 10px;
+}
+
+.score-display {
+    font-size: 1.5rem;
+    font-family: 'Fredoka One', cursive;
+    margin-bottom: 10px;
+}
+
+.score-label {
+    color: #666;
+}
+
+.score-value {
+    color: #32CD32;
+    font-size: 2rem;
+}
+
+.score-divider {
+    color: #999;
+}
+
+.score-total {
+    color: #666;
+}
+
+.stars {
+    font-size: 1.5rem;
+}
+
+.question-number {
+    font-size: 1.1rem;
+    color: #999;
+}
+
+.game-content {
+    text-align: center;
+}
+
+.image-container {
+    background: #FFF8E7;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+#professionImage {
+    max-width: 100%;
+    max-height: 350px;
+    border-radius: 15px;
+}
+
+.answer-section {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#answerInput {
+    flex: 1;
+    max-width: 300px;
+    padding: 15px 20px;
+    font-size: 1.3rem;
+    border: 3px solid #FFD700;
+    border-radius: 50px;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+}
+
+#answerInput:focus {
+    outline: none;
+    border-color: #FF6B35;
+}
+
+#submitBtn {
+    padding: 15px 30px;
+}
+
+.feedback {
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.feedback.correct {
+    background: #32CD32;
+    color: white;
+}
+
+.feedback.wrong {
+    background: #FF69B4;
+    color: white;
+}
+
+.feedback.hidden {
+    display: none;
+}
+
+.result-page {
+    background: white;
+    border-radius: 30px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.result-title {
+    font-size: 3rem;
+    color: #FF6B35;
+    margin-bottom: 30px;
+}
+
+.congratulations {
+    margin-bottom: 30px;
+}
+
+.congrats-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #1a1a2e;
+    margin-bottom: 15px;
+}
+
+.score-text {
+    font-size: 1.3rem;
+    color: #666;
+}
+
+.highlight {
+    color: #FFD700;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.score-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    margin: 0 auto 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+}
+
+.score-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1a1a2e;
+}
+
+.score-label {
+    font-size: 1rem;
+    color: #1a1a2e;
+}
+
+.stars-display {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.star {
+    display: inline-block;
+    animation: starPop 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+@keyframes starPop {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .game-title {
+        font-size: 2rem;
+    }
+
+    .choice-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .choice-card {
+        min-width: 100%;
+        padding: 30px;
+    }
+
+    .admin-page,
+    .select-count-page,
+    .game-page,
+    .result-page {
+        padding: 20px;
+    }
+
+    .professions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .count-buttons {
+        flex-wrap: wrap;
+    }
+
+    .count-btn {
+        width: 70px;
+        height: 70px;
+        font-size: 1.5rem;
+    }
+
+    .answer-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #answerInput {
+        max-width: 100%;
+        font-size: 1.1rem;
+    }
+
+    #professionImage {
+        max-height: 250px;
+    }
+
+    .result-title {
+        font-size: 2rem;
+    }
+
+    .score-circle {
+        width: 120px;
+        height: 120px;
+    }
+
+    .score-number {
+        font-size: 2rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .action-buttons .btn {
+        width: 100%;
+    }
+}

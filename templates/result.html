@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Hasil Permainan{% endblock %}
+
+{% block extra_head %}
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="result-page">
+    <div class="result-content">
+        <h1 class="result-title">🎉 Selesai! 🎉</h1>
+
+        <div class="congratulations">
+            <p class="congrats-text">
+                Vanya, kamu hebat!
+            </p>
+            <p class="score-text">
+                Bisa menebak <span class="highlight">{{ score }}</span> profesi
+                dari <span class="highlight">{{ total }}</span> profesi
+            </p>
+        </div>
+
+        <div class="score-circle">
+            <div class="score-number">{{ score }}/{{ total }}</div>
+            <div class="score-label">Skor</div>
+        </div>
+
+        <div class="stars-display">
+            {% for i in range(score) %}
+            <span class="star">⭐</span>
+            {% endfor %}
+        </div>
+
+        <div class="action-buttons">
+            <a href="{{ url_for('play') }}" class="btn btn-primary">Main Lagi!</a>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">Ke Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Trigger celebration confetti
+    setTimeout(function() {
+        confetti({
+            particleCount: 150,
+            spread: 100,
+            origin: { y: 0.6 }
+        });
+
+        setTimeout(function() {
+            confetti({
+                particleCount: 100,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0 }
+            });
+            confetti({
+                particleCount: 100,
+                angle: 120,
+                spread: 55,
+                origin: { x: 1 }
+            });
+        }, 500);
+    }, 300);
+</script>
+{% endblock %}

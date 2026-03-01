@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Admin - Upload Profesi{% endblock %}
+
+{% block content %}
+<div class="admin-page">
+    <h1>👨‍👩‍👧 Mama Papa Admin</h1>
+
+    <div class="upload-section">
+        <h2>Upload Profesi Baru</h2>
+        <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data" class="upload-form">
+            <div class="form-group">
+                <label for="image">Gambar Profesi:</label>
+                <input type="file" name="image" id="image" accept="image/png,image/jpeg,image/webp" required>
+            </div>
+
+            <div class="form-group">
+                <label for="answer">Jawaban (Nama Profesi):</label>
+                <input type="text" name="answer" id="answer" placeholder="Contoh: Dokter" required maxlength="50">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Upload!</button>
+        </form>
+    </div>
+
+    <div class="professions-list">
+        <h2>Daftar Profesi ({{ professions|length }})</h2>
+        {% if professions %}
+        <div class="professions-grid">
+            {% for prof in professions %}
+            <div class="profession-item">
+                <img src="{{ url_for('static', filename=prof.image_path.replace('static/', '')) }}" alt="{{ prof.answer }}">
+                <p class="profession-name">{{ prof.answer }}</p>
+                <form action="{{ url_for('delete_prof', id=prof.id) }}" method="post" class="delete-form">
+                    <button type="submit" class="btn btn-danger btn-small">Hapus</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="empty-message">Belum ada profesi. Upload yuk!</p>
+        {% endif %}
+    </div>
+
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Kembali ke Home</a>
+</div>
+{% endblock %}
